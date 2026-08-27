@@ -1,3 +1,5 @@
+import { loadCustomWords } from "./words";
+
 export type Topic = "english" | "math";
 export type Difficulty = "easy" | "medium" | "hard";
 
@@ -70,7 +72,9 @@ const uid = () => `q${++counter}-${Date.now().toString(36)}`;
 
 function englishQuestion(level: Difficulty): Question {
   const allowed = levelsUpTo(level);
-  const pool = WORDS.filter((w) => allowed.includes(w.level));
+  const custom = loadCustomWords().map((w) => ({ ...w, level: "easy" as Difficulty }));
+  const all = [...WORDS, ...custom];
+  const pool = all.filter((w) => allowed.includes(w.level) || custom.includes(w as never));
   const verbPool = VERBS.filter((v) => allowed.includes(v.level));
 
   if (verbPool.length && Math.random() < 0.25) {
