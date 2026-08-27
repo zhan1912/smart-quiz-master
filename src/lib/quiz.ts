@@ -48,13 +48,13 @@ const VERBS: { base: string; past: string; level: Difficulty }[] = [
 ];
 
 const rnd = (min: number, max: number) => Math.floor(Math.random() * (max - min + 1)) + min;
-const pick = <T,>(arr: T[]): T => arr[rnd(0, arr.length - 1)];
+const pick = <T,>(arr: T[]): T => arr[rnd(0, arr.length - 1)] as T;
 
 function shuffle<T>(arr: T[]): T[] {
   const a = [...arr];
   for (let i = a.length - 1; i > 0; i--) {
     const j = rnd(0, i);
-    [a[i], a[j]] = [a[j], a[i]];
+    [a[i], a[j]] = [a[j] as T, a[i] as T];
   }
   return a;
 }

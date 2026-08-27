@@ -163,7 +163,7 @@ function Index() {
   }
 
   function choose(option: string) {
-    if (locked) return;
+    if (locked || !current) return;
     setSelected(option);
     setLocked(true);
     if (soundOn) beep(option === current.answer);
