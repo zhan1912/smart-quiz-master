@@ -94,7 +94,7 @@ function englishQuestion(level: Difficulty): Question {
 
   const word = pick(pool);
   const ruToEn = Math.random() < 0.5;
-  const others = shuffle(WORDS.filter((w) => w.en !== word.en)).slice(0, 3);
+  const others = shuffle(all.filter((w) => w.en !== word.en)).slice(0, 3);
   const answer = ruToEn ? word.en : word.ru;
   const options = shuffle([answer, ...others.map((w) => (ruToEn ? w.en : w.ru))]);
   return {
