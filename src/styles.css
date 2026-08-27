@@ -59,7 +59,52 @@
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-ring: var(--sidebar-ring);
+  --color-english: var(--english);
+  --color-english-foreground: var(--english-foreground);
+  --color-math: var(--math);
+  --color-math-foreground: var(--math-foreground);
+  --color-success: var(--success);
+  --animate-q-in: q-in 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+  --animate-pop: pop 0.3s ease-out;
+  --animate-shake: shake 0.35s ease-in-out;
 }
+
+@keyframes q-in {
+  from {
+    opacity: 0;
+    transform: translateY(18px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes pop {
+  0% {
+    transform: scale(0.96);
+  }
+  60% {
+    transform: scale(1.03);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes shake {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(-6px);
+  }
+  75% {
+    transform: translateX(6px);
+  }
+}
+
 
 :root {
   --radius: 1rem;
